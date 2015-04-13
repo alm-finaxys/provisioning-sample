@@ -30,7 +30,7 @@ Vagrant::Config.run do |config|
   # network using the host's network device. This makes the VM appear as another
   # physical device on your network.
   config.vm.network :bridged, :bridge => "tap0", :mac => "080027B11DDC"
-  config.vm.forward_port 22, 2288, :adapter => 1
+  config.vm.forward_port 22, 2244, :adapter => 1
   #config.vm.forward_port 8080, 8150, :adapter => 1
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
