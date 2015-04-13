@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Author: S. Guclu
-# description: created VM and provisions basic tools for continuous deployment chain
+# description: created VM and provisions basic tools
 
 Vagrant::Config.run do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -10,15 +10,12 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  #config.vm.box = "precise32"
-  config.vm.box = "phusion/ubuntu-14.04-amd64"
-  config.vm.host_name = "vagrantnode"
+  config.vm.box = "puppetlabs/centos-7.0-64-puppet"
+  config.vm.host_name = "CENTOS64VM01"
   
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesnl from where the 'co"'t already exist on the user's system.
-  # config.vm.box_url "= "http://domain.com/path/to/above.box"
-  #config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-  config.vm.box_url = "https://atlas.hashicorp.com/phusion/boxes/ubuntu-14.04-amd64" 
+  config.vm.box_url = "https://atlas.hashicorp.com/puppetlabs/boxes/centos-7.0-64-puppet" 
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -32,9 +29,9 @@ Vagrant::Config.run do |config|
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
   # physical device on your network.
-  config.vm.network :bridged, :bridge => "tap0", :mac => "080027B184AA"
-  config.vm.forward_port 22, 2250, :adapter => 1
-  config.vm.forward_port 8080, 8150, :adapter => 1
+  config.vm.network :bridged, :bridge => "tap0", :mac => "080027B11DDC"
+  config.vm.forward_port 22, 2288, :adapter => 1
+  #config.vm.forward_port 8080, 8150, :adapter => 1
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   # config.vm.forward_port 80, 8080
@@ -68,8 +65,8 @@ Vagrant::Config.run do |config|
 # end
 
   config.vm.provision :puppet do |puppet|
-     puppet.manifests_path = "puppet"
-     puppet.manifest_file = "tomcat7.pp"
+     puppet.manifests_path = "."
+     puppet.manifest_file = "puppet.pp"
   end
 
   config.vm.provision "docker" do |docker|
@@ -112,7 +109,7 @@ Vagrant::Config.run do |config|
   # chef.validation_client_name = "ORGNAME-validator"
   Vagrant::Config.run do |config|
     config.vm.provider "virtualbox" do |vb|
-      vb.customize [ "modifyvm", :id, "--cpus", 2, "--memory", 2048, "--name", "VAGRANTNODE" ]
+      vb.customize [ "modifyvm", :id, "--cpus", 2, "--memory", 16384, "--name", "CENTOS64VM01" ]
     end
   end
 end
