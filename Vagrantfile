@@ -69,9 +69,9 @@ Vagrant::Config.run do |config|
      puppet.manifest_file = "puppet.pp"
   end
 
-  config.vm.provision "docker" do |docker|
+  #config.vm.provision "docker" do |docker|
     # docker.build_image "/vagrant/app"
-  end
+  #end
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
