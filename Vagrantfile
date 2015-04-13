@@ -109,7 +109,10 @@ Vagrant::Config.run do |config|
   # chef.validation_client_name = "ORGNAME-validator"
   Vagrant::Config.run do |config|
     config.vm.provider "virtualbox" do |vb|
-      vb.customize [ "modifyvm", :id, "--cpus", 2, "--memory", 8196, "--name", "CENTOS64VM01" ]
+      vb.name = "CENTOS64VM01"
+      vb.memory = 16384
+      vb.cpus = 2
+      #vb.customize [ "modifyvm", :id, "--cpus", 2, "--memory", 8196  ]
     end
   end
 end
