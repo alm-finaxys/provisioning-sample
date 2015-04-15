@@ -65,7 +65,8 @@ Vagrant::Config.run do |config|
 # end
 
 
-  # https://github.com/purple52/librarian-puppet-vagrant
+  # taken from https://github.com/purple52/librarian-puppet-vagrant
+  # see this discuss about puppet modules install on vagrant context : https://groups.google.com/forum/#!topic/vagrant-up/zLCnqzCYckA
   # This shell provisioner installs librarian-puppet and runs it to install
   # puppet modules. This has to be done before the puppet provisioning so that
   # the modules are available when puppet tries to parse its manifests.
