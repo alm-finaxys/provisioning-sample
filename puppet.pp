@@ -67,3 +67,15 @@ Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 #   command => 'sudo /tmp/sudo-update.sh',
 #   require => File["/tmp/sudo-update.sh"],
 #}
+
+node /jenkins-slave.*/ {
+  class { 'jenkins::slave':
+    masterurl => 'https://cinode:44312',
+    ui_user => 'almuser',
+    ui_pass => 'A12lmuseR',
+  }
+}
+ node /jenkins-master.*/ {
+    include jenkins
+    include jenkins::master
+}
