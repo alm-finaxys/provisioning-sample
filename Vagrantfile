@@ -11,7 +11,7 @@ Vagrant::Config.run do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "puppetlabs/centos-7.0-64-puppet"
-  config.vm.host_name = "CENTOS64VM01"
+  config.vm.host_name = "CENTOS64AUTOSLAVE"
   
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesnl from where the 'co"'t already exist on the user's system.
@@ -29,8 +29,8 @@ Vagrant::Config.run do |config|
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
   # physical device on your network.
-  config.vm.network :bridged, :bridge => "tap0", :mac => "080027B11DDC"
-  config.vm.forward_port 22, 2244, :adapter => 1
+  config.vm.network :bridged, :bridge => "tap0", :mac => "080027B11DDD"
+  config.vm.forward_port 22, 2299, :adapter => 1
   #config.vm.forward_port 8080, 8150, :adapter => 1
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
@@ -112,7 +112,7 @@ end
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.customize [ "modifyvm", :id, "--cpus", 2 ]
-    vb.customize [ "modifyvm", :id, "--memory", 16384 ]
-    vb.customize [ "modifyvm", :id, "--name", "CENTOS64VM01" ]
+    vb.customize [ "modifyvm", :id, "--memory", 2048 ]
+    vb.customize [ "modifyvm", :id, "--name", "CENTOS64AUTOSLAVE" ]
   end
 end
