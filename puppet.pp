@@ -68,14 +68,16 @@ Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 #   require => File["/tmp/sudo-update.sh"],
 #}
 
-node /jenkins-slave.*/ {
+node /centos64autoslave.*/ {
   class { 'jenkins::slave':
     masterurl => 'https://cinode:44312',
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
   }
 }
- node /jenkins-master.*/ {
-    include jenkins
-    include jenkins::master
-}
+
+# node /jenkins-master.*/ {
+# node  /centos64autoslave.*/ {
+#    include jenkins
+#    include jenkins::master
+#}
