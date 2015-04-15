@@ -64,6 +64,17 @@ Vagrant::Config.run do |config|
 # puppet module install maestrodev-jetty"
 # end
 
+
+  # https://github.com/purple52/librarian-puppet-vagrant
+  # This shell provisioner installs librarian-puppet and runs it to install
+  # puppet modules. This has to be done before the puppet provisioning so that
+  # the modules are available when puppet tries to parse its manifests.
+  config.vm.provision :shell do |shell|
+    shell.path = "shell/librarian-puppet.sh"
+  # uncomment the next line if you want to install the librarian-ruby gem instead the package
+  #  shell.args = "-g"
+  end
+
   config.vm.provision :puppet do |puppet|
      puppet.manifests_path = "."
      puppet.manifest_file = "puppet.pp"
@@ -111,6 +122,7 @@ end
 
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
+    vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
     vb.customize [ "modifyvm", :id, "--cpus", 2 ]
     vb.customize [ "modifyvm", :id, "--memory", 2048 ]
     vb.customize [ "modifyvm", :id, "--name", "CENTOS64AUTOSLAVE" ]
