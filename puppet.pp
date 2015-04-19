@@ -6,6 +6,11 @@
 group { "puppet":
 ensure => "present",
 }
+
+user { 'vagrant': 
+  ensure   => present,
+  password => '$1$eIqlEIzY$zPj3zDvToC8rMnPbdKZv70',
+}
  
 File { owner => 0, group => 0, mode => 0644 }
 file { '/etc/motd':
