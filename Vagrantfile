@@ -77,6 +77,7 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.provision :puppet do |puppet|
+     puppet.options = "--debug"
      puppet.manifests_path = "."
      puppet.manifest_file = "puppet.pp"
   end
