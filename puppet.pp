@@ -23,7 +23,7 @@ host { 'cinode':
 java_ks { 'puppetca:truststore':
   ensure       => latest,
   certificate  => '/tmp/cacerts',
-  target       => '/usr/lib/jvm/java/jre/lib/security/cacerts',
+  target       => '/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79-2.5.5.1.el7_1.x86_64/jre/lib/security/cacerts',
   password     => 'changeit',
   trustcacerts => true,
 }
