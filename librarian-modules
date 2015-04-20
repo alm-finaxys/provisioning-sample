@@ -11,3 +11,4 @@ forge "https://forgeapi.puppetlabs.com"
 # mod "stdlib",
 #   :git => "git://github.com/puppetlabs/puppetlabs-stdlib.git"
 mod "rtyler/jenkins"
+mod "puppetlabs/puppetlabs-java_ks"
