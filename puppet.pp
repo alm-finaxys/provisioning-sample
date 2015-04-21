@@ -42,6 +42,7 @@ node /centos64autoslave.*/ {
     masterurl => 'https://cinode:44312',
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
+    disable_ssl_verification => true,
   }
 }
 
