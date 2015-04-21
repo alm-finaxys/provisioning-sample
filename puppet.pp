@@ -39,7 +39,7 @@ Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 # slave registration through swarm plugin
 node /centos64autoslave.*/ {
   class { 'jenkins::slave':
-    masterurl => 'https://cinode:44312',
+    masterurl => 'https://cinode:8081',
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
     disable_ssl_verification => true,
