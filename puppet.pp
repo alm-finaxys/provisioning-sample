@@ -43,6 +43,8 @@ node /centos64autoslave.*/ {
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
     disable_ssl_verification => true,
+    executors => 4,
+    labels => 'autoslave'
   }
 }
 
