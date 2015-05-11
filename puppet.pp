@@ -24,7 +24,7 @@ java_ks { 'puppetca:truststore':
   ensure       => latest,
   path => '/usr/bin/sudo /usr/bin/keytool',
   certificate  => '/tmp/cacerts',
-  target       => '/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79-2.5.5.1.el7_1.x86_64/jre/lib/security/cacerts',
+  target       => '/etc/pki/ca-trust/extracted/java/cacerts',
   password     => 'changeit',
   trustcacerts => true,
 }
