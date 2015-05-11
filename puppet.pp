@@ -22,7 +22,6 @@ host { 'cinode':
 # java truststore update with root CA
 java_ks { 'puppetca:truststore':
   ensure       => latest,
-  path => '/usr/bin/sudo /usr/bin/keytool',
   certificate  => '/tmp/cacerts',
   target       => '/etc/pki/ca-trust/extracted/java/cacerts',
   password     => 'changeit',
