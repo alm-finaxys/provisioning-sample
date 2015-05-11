@@ -20,13 +20,14 @@ host { 'cinode':
 }
 
 # java truststore update with root CA
-#java_ks { 'puppetca:truststore':
-#  ensure       => latest,
-#  certificate  => '/tmp/cacerts',
-#  target       => '/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79-2.5.5.1.el7_1.x86_64/jre/lib/security/cacerts',
-#  password     => 'changeit',
-#  trustcacerts => true,
-#}
+java_ks { 'puppetca:truststore':
+  ensure       => latest,
+  path => '/usr/bin/sudo /usr/bin/keytool',
+  certificate  => '/tmp/cacerts',
+  target       => '/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.79-2.5.5.1.el7_1.x86_64/jre/lib/security/cacerts',
+  password     => 'changeit',
+  trustcacerts => true,
+}
 
 # various options 
 File { owner => 0, group => 0, mode => 0644 }
@@ -39,7 +40,6 @@ Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 # slave registration through swarm plugin
 node /centos64autoslave.*/ {
   class { 'jenkins::slave':
-    path => '/usr/bin/sudo /usr/bin/keytool',
     masterurl => 'https://cinode:8081',
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
