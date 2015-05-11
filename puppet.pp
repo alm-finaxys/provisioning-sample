@@ -39,6 +39,7 @@ Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 # slave registration through swarm plugin
 node /centos64autoslave.*/ {
   class { 'jenkins::slave':
+    path => '/usr/bin/sudo /usr/bin/keytool',
     masterurl => 'https://cinode:8081',
     ui_user => 'almuser',
     ui_pass => 'A12lmuseR',
